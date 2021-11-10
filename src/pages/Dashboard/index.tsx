@@ -1,11 +1,10 @@
-// Exportanto
 import React from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Title, Form, Repos, Error } from './styles';
 
 import logo from '../../assets/logo.svg';
-import { api } from '../../services/api'
+import { api } from '../../services/api';
 
 interface GithubRepository {
     full_name: string;
@@ -13,10 +12,10 @@ interface GithubRepository {
     owner: {
         login: string;
         avatar_url: string;
-    };
+    }
 }
 
-export const Dashboard: React.FC = () => {
+const Dashboard: React.FC = () => {
     const [repos, setRepos] = React.useState<GithubRepository[]>(() => {
         const storageRepos = localStorage.getItem('@GitCollection:repositories');
 
@@ -24,8 +23,7 @@ export const Dashboard: React.FC = () => {
             return JSON.parse(storageRepos);
         }
         return [];
-    });
-
+    })
 
     // Valor do Input
     const [newRepo, setNewRepo] = React.useState('');
@@ -70,7 +68,7 @@ export const Dashboard: React.FC = () => {
             setInputError('');
             setInputError('');
         } catch {
-            setInputError('Repositório não encontrado no GitHub');
+            setInputError('Repositório não encontrado no GitHub!');
         }
     }
 
@@ -116,4 +114,7 @@ export const Dashboard: React.FC = () => {
         </>
 
     )
-};
+}
+
+export default Dashboard;
+

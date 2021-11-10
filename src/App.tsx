@@ -16,7 +16,7 @@ const App: React.FunctionComponent = () => {
 
             <GlobalStyle />
         </>
-    );
-};
+    )
+}
 
 export default App;
